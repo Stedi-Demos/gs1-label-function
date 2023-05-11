@@ -83,3 +83,38 @@ When invoked with a JSON payload as detailed above, the function will:
 ```bash
 npm run deploy
 ```
+
+## Executing the Stedi Function remotely
+
+You can integrate this Stedi function into an external application by using the Stedi Functions SDK or by making a HTTP call.
+
+Here's example code that uses the Stedi Functions SDK to invoke:
+
+```typescript
+import {
+  FunctionsClient,
+  InvokeFunctionCommand,
+  InvocationType,
+} from "@stedi/sdk-client-functions";
+
+const functions = new FunctionsClient({
+  region: "us",
+  apiKey: "<YOUR_STEDI_API_KEY>",
+});
+
+const response = await functions.send(
+  new InvokeFunctionCommand({
+    functionName: "labels-gs1",
+    invocationType: InvocationType.SYNCHRONOUS,
+    payload: {
+      shipFrom: { ... },
+      shipTo: { ... },
+      carrier: { ... },
+      purchaseOrder: { ... },
+      gs1: { ... },
+    },
+  })
+);
+
+console.log(response);
+```
