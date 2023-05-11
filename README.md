@@ -41,7 +41,7 @@ The function expects an input as follows:
 
 And will generate a label that looks like:
 
-[!Sample Logistics Label](./assets/sample-label.png)
+<img alt="Sample Logistics Label" src="./assets/sample-label.png" />
 
 **NOTE:** This function is intended for reference purposes only.
 
